@@ -24,7 +24,7 @@ def create_commendation(schoolkid_name, subject):
     ]
 
     schoolkid = Schoolkid.objects.get(full_name__contains=schoolkid_name)
-    targeted_subject = Subject.objects.filter(title=subject, year_of_study=schoolkid.year_of_study)[0]
+    targeted_subject = Subject.objects.get(title=subject, year_of_study=schoolkid.year_of_study)
     lessons = Lesson.objects.filter(group_letter=schoolkid.group_letter, subject=targeted_subject)
     last_lesson = lessons.last()
     Commendation.objects.create(
