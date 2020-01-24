@@ -1,5 +1,5 @@
 def fix_marks(schoolkid_name):
-    from datacenter.models import Schoolkid
+    from datacenter.models import Schoolkid, Mark
     schoolkid = Schoolkid.objects.get(full_name__contains=schoolkid_name)
     Mark.objects.filter(schoolkid=schoolkid, points__lt=4).update(points=5)
 
